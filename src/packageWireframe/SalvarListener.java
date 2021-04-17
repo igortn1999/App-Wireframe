@@ -24,7 +24,15 @@ public class SalvarListener implements ActionListener{
 	private JCheckBox assistido;
 	private StarRater starRater;
 	
-
+	private String titulo;
+	private String sinopse;
+	private String genero;
+	private String verEm;
+	private boolean assistiu;
+	private float estrelas;
+	
+	private String visto;
+	
 	public SalvarListener(JTextArea caixa_titulo, JTextArea caixa_sinopse,
 			JComboBox<String> comboBoxGeneros, ButtonGroup ondeVer,
 			JCheckBox assistido, StarRater starRater) {
@@ -45,18 +53,69 @@ public class SalvarListener implements ActionListener{
 		boolean assistiu = assistido.isSelected();
 		float estrelas = starRater.getRating();
 		
-		String visto;
-		if(assistiu == true) visto = "Sim";
-		else visto = "Não";
-		
-		System.out.println("\nTitulo: "+ titulo);
-		System.out.println("\nSinopse: " + sinopse);
-		System.out.println("\nGenero: " + genero);
-		System.out.println("\nFilme disponível em: " + verEm);
-		System.out.println("\nAssistido: " + visto);
-		System.out.println("\nClassificação: "+ estrelas + " Estrelas");
-		System.out.println("\n------------------------------------------------\n");
+//		if(assistiu == true) visto = "Sim";
+//		else visto = "Não";
 		
 	}
+
+	public String getTitulo() {
+		return titulo;
+	}
+
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
+
+	public String getSinopse() {
+		return sinopse;
+	}
+
+	public void setSinopse(String sinopse) {
+		this.sinopse = sinopse;
+	}
+
+	public String getGenero() {
+		return genero;
+	}
+
+	public void setGenero(String genero) {
+		this.genero = genero;
+	}
+
+	public String getVerEm() {
+		return verEm;
+	}
+
+	public void setVerEm(String verEm) {
+		this.verEm = verEm;
+	}
+
+	public boolean isAssistiu() {
+		return assistiu;
+	}
+
+	public void setAssistiu(boolean assistiu) {
+		this.assistiu = assistiu;
+	}
+
+	public float getEstrelas() {
+		return estrelas;
+	}
+
+	public void setEstrelas(float estrelas) {
+		this.estrelas = estrelas;
+	}
+
+	public String getVisto() {
+		if(assistiu == true) visto = "Sim";
+		else visto = "Não";
+		return visto;
+	}
+
+	public void setVisto(String visto) {
+		this.visto = visto;
+	}
+	
+	
 
 }

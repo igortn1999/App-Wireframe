@@ -137,8 +137,9 @@ public class AppWireframe extends JFrame{
 										starRater);
 		botao_salvar.addActionListener(salvarListener);
 		
+		Filme filme = new Filme(salvarListener);
 		
-		
+		filme.imprimeFilme();
 		
 		//--------------PANEL CREDITOS--------------------
 		JPanel creditos = new JPanel();
