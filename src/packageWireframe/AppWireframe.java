@@ -85,7 +85,8 @@ public class AppWireframe extends JFrame{
 		//generos
 		JPanel panel_generos = new JPanel();
 		String[] generos = {"Selecione o Genero", "Ação", "Aventura", "Terror", "Comedia"};
-		panel_generos.add(new JComboBox<String>(generos));
+		JComboBox<String> comboBoxGeneros = new JComboBox<String>(generos);
+		panel_generos.add(comboBoxGeneros);
 		boxMEIO.add(panel_generos);
 		//botoes Salvar e Cancelar
 		JPanel panel_botoes = new JPanel();
@@ -95,7 +96,7 @@ public class AppWireframe extends JFrame{
 		panel_botoes.add(botao_salvar);
 		panel_botoes.add(botao_cancelar);
 		boxMEIO.add(panel_botoes);
-		//Adicionando Listener
+		//Botao salvar será usado no listener posteriormente
 		
 		detalhes.add(boxMEIO);
 		
@@ -108,8 +109,11 @@ public class AppWireframe extends JFrame{
 		infos.add(ondeAssistir);
 		//Criação dos radio buttons do "Onde assistir"
 		JRadioButton buttonNetflix = new JRadioButton("Netflix");
+		buttonNetflix.setActionCommand("Netflix");//torna mais facil pegar conteudo para o sysout
 		JRadioButton buttonPrime = new JRadioButton("Prime Video");
+		buttonPrime.setActionCommand("Prime Video");
 		JRadioButton buttonPirate = new JRadioButton("Pirate Bay");
+		buttonPirate.setActionCommand("Pirate Bay");
 		ButtonGroup grupoOndeAssistir = new ButtonGroup();
 		grupoOndeAssistir.add(buttonNetflix);
 		grupoOndeAssistir.add(buttonPrime);
@@ -123,9 +127,19 @@ public class AppWireframe extends JFrame{
 		//Star Rater
 		StarRater starRater = new StarRater(5);
 		infos.add(starRater);
-		
+		//Adicionando o Box infos ao Box boxDIR
 		boxDIR.add(infos);
 		detalhes.add(boxDIR);
+		
+		//Adicionando Listener ao botao_salvar implementado anteriormente
+		SalvarListener salvarListener = new SalvarListener(caixa_titulo, caixa_sinopse, 
+										comboBoxGeneros, grupoOndeAssistir, assistido,
+										starRater);
+		botao_salvar.addActionListener(salvarListener);
+		
+		
+		
+		
 		//--------------PANEL CREDITOS--------------------
 		JPanel creditos = new JPanel();
 		creditos.setLayout(new BoxLayout(creditos, BoxLayout.Y_AXIS));
