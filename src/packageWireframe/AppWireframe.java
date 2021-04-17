@@ -136,7 +136,8 @@ public class AppWireframe extends JFrame{
 										comboBoxGeneros, grupoOndeAssistir, assistido,
 										starRater);
 		botao_salvar.addActionListener(salvarListener);
-		
+		//em vez de salvar no listener, tem que salvar na classe filme e passar 
+		//a classe fime de parametro pro listener
 		Filme filme = new Filme(salvarListener);
 		
 		filme.imprimeFilme();
