@@ -24,6 +24,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -51,7 +52,7 @@ public class AppWireframe extends JFrame{
 		
 		JLabel capa = new JLabel();
 		capa.setPreferredSize(new Dimension(170,200));
-		ImageIcon imageIcon = new ImageIcon(new ImageIcon("src/logo_fiap.png").getImage().getScaledInstance(170, 200, Image.SCALE_DEFAULT));
+		ImageIcon imageIcon = new ImageIcon(new ImageIcon("src/star_wars.jpg").getImage().getScaledInstance(170, 200, Image.SCALE_DEFAULT));
 		capa.setIcon(imageIcon);
 		boxESQ.add(capa);
 		
@@ -60,27 +61,46 @@ public class AppWireframe extends JFrame{
 		//boxMEIO------------------------------
 		JPanel boxMEIO = new JPanel();
 		boxMEIO.setLayout(new BoxLayout(boxMEIO, BoxLayout.Y_AXIS));
+		
 		//titulo do filme
 		JPanel juntaTITULO = new JPanel();
 		juntaTITULO.setLayout(new BoxLayout(juntaTITULO, BoxLayout.Y_AXIS));
+		
 		JLabel titulo = new JLabel("Titulo: ");
-		juntaTITULO.add(titulo);
+		titulo.setAlignmentX(CENTER_ALIGNMENT);
+		juntaTITULO.add(titulo);//
 		JTextArea caixa_titulo = new JTextArea();
-		caixa_titulo.setColumns(1);
-		caixa_titulo.setRows(1);
+//		caixa_titulo.setBounds(5, 2, 35, 10);
 		caixa_titulo.setBorder(BorderFactory.criar());
-		juntaTITULO.add(caixa_titulo);
+		caixa_titulo.setLineWrap(true);
+		caixa_titulo.setWrapStyleWord(true);
+		
+		JScrollPane scroll_titulo = new JScrollPane();
+		scroll_titulo.setViewportView(caixa_titulo);
+//		caixa_titulo.setPreferredSize(new Dimension(40, 30));
+//		scroll_titulo.setBounds(5, 2, 35, 10);
+		
+		juntaTITULO.add(scroll_titulo);
 		boxMEIO.add(juntaTITULO);
+		
 		//sinopse do filme
 		JPanel juntaSINOPSE = new JPanel();
 		juntaSINOPSE.setLayout(new BoxLayout(juntaSINOPSE, BoxLayout.Y_AXIS));
 		JLabel sinopse = new JLabel("Sinopse: ");
+		sinopse.setAlignmentX(CENTER_ALIGNMENT);
 		juntaSINOPSE.add(sinopse);
 		JTextArea caixa_sinopse = new JTextArea();
-		caixa_sinopse.setColumns(1);
-		caixa_sinopse.setRows(1);
+//		caixa_titulo.setBounds(10, 2, 40, 10);
 		caixa_sinopse.setBorder(BorderFactory.criar());
-		juntaSINOPSE.add(caixa_sinopse);
+		caixa_sinopse.setLineWrap(true);
+		caixa_sinopse.setWrapStyleWord(true);
+		
+		JScrollPane scroll_sinopse = new JScrollPane();
+		scroll_sinopse.setViewportView(caixa_sinopse);
+
+		juntaSINOPSE.add(scroll_sinopse);
+//		juntaSINOPSE.add(caixa_sinopse);
+		
 		boxMEIO.add(juntaSINOPSE);
 		//generos
 		JPanel panel_generos = new JPanel();
@@ -131,16 +151,20 @@ public class AppWireframe extends JFrame{
 		boxDIR.add(infos);
 		detalhes.add(boxDIR);
 		
-		//Adicionando Listener ao botao_salvar implementado anteriormente
-		SalvarListener salvarListener = new SalvarListener(caixa_titulo, caixa_sinopse, 
-										comboBoxGeneros, grupoOndeAssistir, assistido,
-										starRater);
-		botao_salvar.addActionListener(salvarListener);
-		//em vez de salvar no listener, tem que salvar na classe filme e passar 
-		//a classe fime de parametro pro listener
-		Filme filme = new Filme(salvarListener);
+		//criando a classe filme
+		Filme filme = new Filme();
 		
-		filme.imprimeFilme();
+		
+		//Adicionando Listener ao botao_salvar implementado anteriormente
+		SalvarListener salvarListener = new SalvarListener(filme, caixa_titulo, caixa_sinopse, 
+				comboBoxGeneros, grupoOndeAssistir, assistido,
+				starRater);
+		
+		
+		botao_salvar.addActionListener(salvarListener);
+		
+		//listener tem que avisar a classe fime que ele pode pegar 
+		
 		
 		//--------------PANEL CREDITOS--------------------
 		JPanel creditos = new JPanel();
