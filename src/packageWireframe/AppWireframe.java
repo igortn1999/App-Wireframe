@@ -1,10 +1,9 @@
-//--------------------------------------
+//<-Clique para expandir esse painel!---
 //---------Entrega Parcial APMD---------
-//--------------------------------------
 //-----Nome: Igor Tomazelli Nietmann----
 //--------------RM: 82808---------------
 //------------Turma: 3ECA---------------
-//--------------------------------------
+
 
 package packageWireframe;
 
@@ -44,10 +43,10 @@ public class AppWireframe extends JFrame{
 		//--------------PANEL DETALHES---------
 		JPanel detalhes = new JPanel();
 		detalhes.setLayout(new BoxLayout(detalhes, BoxLayout.X_AXIS));
-		
+		//box layout foi utilizado por ser mais flexivel
 		//boxESQ (só a imagem)----------------
 		JPanel boxESQ = new JPanel();
-		
+		//adicionando e formatando a imagem
 		JLabel capa = new JLabel();
 		capa.setPreferredSize(new Dimension(170,200));
 		ImageIcon imageIcon = new ImageIcon(new ImageIcon("src/star_wars.jpg").getImage().getScaledInstance(170, 200, Image.SCALE_DEFAULT));
@@ -55,7 +54,6 @@ public class AppWireframe extends JFrame{
 		boxESQ.add(capa);
 		
 		detalhes.add(boxESQ);
-		
 		//boxMEIO------------------------------
 		JPanel boxMEIO = new JPanel();
 		boxMEIO.setLayout(new BoxLayout(boxMEIO, BoxLayout.Y_AXIS));
@@ -63,32 +61,29 @@ public class AppWireframe extends JFrame{
 		//titulo do filme
 		JPanel juntaTITULO = new JPanel();
 		juntaTITULO.setLayout(new BoxLayout(juntaTITULO, BoxLayout.Y_AXIS));
-		
+		//label titulo
 		JLabel titulo = new JLabel("Titulo: ");
 		titulo.setAlignmentX(CENTER_ALIGNMENT);
-		juntaTITULO.add(titulo);//
+		juntaTITULO.add(titulo);
+		//caixa de texto para receber titulo
 		JTextArea caixa_titulo = new JTextArea();
-//		caixa_titulo.setBounds(5, 2, 35, 10);
 		caixa_titulo.setBorder(BorderFactory.criar());
 		caixa_titulo.setLineWrap(true);
 		caixa_titulo.setWrapStyleWord(true);
-		
+		//scroll panel para ajudar na formatação 
 		JScrollPane scroll_titulo = new JScrollPane();
 		scroll_titulo.setViewportView(caixa_titulo);
-//		caixa_titulo.setPreferredSize(new Dimension(40, 30));
-//		scroll_titulo.setBounds(5, 2, 35, 10);
 		
 		juntaTITULO.add(scroll_titulo);
 		boxMEIO.add(juntaTITULO);
 		
-		//sinopse do filme
+		//sinopse do filme, mesmo raciocinio do título
 		JPanel juntaSINOPSE = new JPanel();
 		juntaSINOPSE.setLayout(new BoxLayout(juntaSINOPSE, BoxLayout.Y_AXIS));
 		JLabel sinopse = new JLabel("Sinopse: ");
 		sinopse.setAlignmentX(CENTER_ALIGNMENT);
 		juntaSINOPSE.add(sinopse);
 		JTextArea caixa_sinopse = new JTextArea();
-//		caixa_titulo.setBounds(10, 2, 40, 10);
 		caixa_sinopse.setBorder(BorderFactory.criar());
 		caixa_sinopse.setLineWrap(true);
 		caixa_sinopse.setWrapStyleWord(true);
@@ -97,7 +92,6 @@ public class AppWireframe extends JFrame{
 		scroll_sinopse.setViewportView(caixa_sinopse);
 
 		juntaSINOPSE.add(scroll_sinopse);
-//		juntaSINOPSE.add(caixa_sinopse);
 		
 		boxMEIO.add(juntaSINOPSE);
 		//generos

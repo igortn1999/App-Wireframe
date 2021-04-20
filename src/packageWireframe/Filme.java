@@ -106,7 +106,6 @@ public class Filme {
 
 
 	public float getEstrelas() {
-//		if(this.estrelas < 0 || this.estrelas > 5) this.estrelas=0;
 		return estrelas;
 	}
 
