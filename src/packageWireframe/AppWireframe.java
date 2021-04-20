@@ -145,6 +145,8 @@ public class AppWireframe extends JFrame{
 		
 		//criando a classe filme
 		Filme filme = new Filme();
+		
+		
 		//Adicionando Listener ao botao_salvar implementado anteriormente
 		SalvarListener salvarListener = new SalvarListener(filme, caixa_titulo, caixa_sinopse, 
 				comboBoxGeneros, grupoOndeAssistir, assistido,

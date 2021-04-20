@@ -34,7 +34,7 @@ public class SalvarListener implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		Filme filme = new Filme(caixa_titulo, caixa_sinopse, comboBoxGeneros, verEm, assistido, starRater);
 		this.filme= filme;
-		filme.imprimeFilme();
+		this.filme.imprimeFilme();
 	}
 
 }
