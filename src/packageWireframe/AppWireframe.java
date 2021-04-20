@@ -7,10 +7,7 @@
 
 package packageWireframe;
 
-import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
 import java.awt.Image;
 
 import javax.swing.BoxLayout;
@@ -26,7 +23,6 @@ import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextArea;
-import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
@@ -49,7 +45,7 @@ public class AppWireframe extends JFrame{
 		//adicionando e formatando a imagem
 		JLabel capa = new JLabel();
 		capa.setPreferredSize(new Dimension(170,200));
-		ImageIcon imageIcon = new ImageIcon(new ImageIcon("src/star_wars.jpg").getImage().getScaledInstance(170, 200, Image.SCALE_DEFAULT));
+		ImageIcon imageIcon = new ImageIcon(new ImageIcon("src/star_wars.jpg").getImage().getScaledInstance(170, 200, Image.SCALE_SMOOTH));
 		capa.setIcon(imageIcon);
 		boxESQ.add(capa);
 		
@@ -161,10 +157,16 @@ public class AppWireframe extends JFrame{
 		//--------------PANEL CREDITOS--------------------
 		JPanel creditos = new JPanel();
 		creditos.setLayout(new BoxLayout(creditos, BoxLayout.Y_AXIS));
+		creditos.setAlignmentX(CENTER_ALIGNMENT);
 		creditos.add(new JLabel("Desenvolvido por:"));
 		creditos.add(new JLabel("Igor Tomazelli Nietmann | RM: 82808"));
-		JLabel label_icone = new JLabel(new ImageIcon("src/logofiap.jpg"));
-		creditos.add(label_icone);
+		ImageIcon iconeFiap = new ImageIcon(new ImageIcon("src/dev.jfif").getImage().getScaledInstance(250, 150, Image.SCALE_DEFAULT));
+		JLabel labelIconeFoto = new JLabel();
+		labelIconeFoto.setIcon(iconeFiap);
+		creditos.add(labelIconeFoto);
+		
+		JLabel agradecimentos = new JLabel("Agradecimentos especiais: Stack Overflow");
+		creditos.add(agradecimentos);
 		
 		//--------------------Adição Panels-------------
 		abas.add("Detalhes", detalhes);
