@@ -27,10 +27,12 @@ public class Filme {
 		this.genero=comboBoxGeneros.getSelectedItem().toString();
 		this.verEm = verEm.getSelection().getActionCommand();
 		this.assistido = assistido.isSelected();
-		this.estrelas = starRater.getRating();
+		this.estrelas = starRater.getSelection();
 	}
 	
 	public String getTitulo() {
+		String dummy = "";
+		if(this.titulo.compareTo(dummy)==0)this.titulo="Não informado";
 		return titulo;
 	}
 
@@ -45,6 +47,8 @@ public class Filme {
 
 
 	public String getSinopse() {
+		String dummy = "";
+		if(this.sinopse.compareTo(dummy)==0)this.sinopse="Não informado";
 		return sinopse;
 	}
 
@@ -59,6 +63,7 @@ public class Filme {
 
 
 	public String getGenero() {
+		if (this.genero == "Selecione o Genero") this.genero="Genero não selecinado";
 		return genero;
 	}
 
@@ -101,6 +106,7 @@ public class Filme {
 
 
 	public float getEstrelas() {
+//		if(this.estrelas < 0 || this.estrelas > 5) this.estrelas=0;
 		return estrelas;
 	}
 

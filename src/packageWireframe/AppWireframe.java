@@ -39,8 +39,6 @@ public class AppWireframe extends JFrame{
 		//adicionando tabbedpane 
 		JTabbedPane abas = new JTabbedPane();
 		
-		//--------------PANEL LISTA------------
-		JPanel lista = new JPanel();
 		
 		
 		//--------------PANEL DETALHES---------
@@ -104,7 +102,7 @@ public class AppWireframe extends JFrame{
 		boxMEIO.add(juntaSINOPSE);
 		//generos
 		JPanel panel_generos = new JPanel();
-		String[] generos = {"Selecione o Genero", "Ação", "Aventura", "Terror", "Comedia"};
+		String[] generos = {"Selecione o Genero", "Ação", "Aventura", "Terror", "Comedia", "SciFi"};
 		JComboBox<String> comboBoxGeneros = new JComboBox<String>(generos);
 		panel_generos.add(comboBoxGeneros);
 		boxMEIO.add(panel_generos);
@@ -128,6 +126,9 @@ public class AppWireframe extends JFrame{
 		JLabel ondeAssistir = new JLabel("Onde Assistir");
 		infos.add(ondeAssistir);
 		//Criação dos radio buttons do "Onde assistir"
+		JRadioButton dummyButton = new JRadioButton();//botao dummy para não dar erro se o usuario não escolher nada
+		dummyButton.setSelected(true);
+		dummyButton.setActionCommand("Não selecionado");
 		JRadioButton buttonNetflix = new JRadioButton("Netflix");
 		buttonNetflix.setActionCommand("Netflix");//torna mais facil pegar conteudo para o sysout
 		JRadioButton buttonPrime = new JRadioButton("Prime Video");
@@ -135,6 +136,7 @@ public class AppWireframe extends JFrame{
 		JRadioButton buttonPirate = new JRadioButton("Pirate Bay");
 		buttonPirate.setActionCommand("Pirate Bay");
 		ButtonGroup grupoOndeAssistir = new ButtonGroup();
+		grupoOndeAssistir.add(dummyButton);
 		grupoOndeAssistir.add(buttonNetflix);
 		grupoOndeAssistir.add(buttonPrime);
 		grupoOndeAssistir.add(buttonPirate);
@@ -153,18 +155,14 @@ public class AppWireframe extends JFrame{
 		
 		//criando a classe filme
 		Filme filme = new Filme();
-		
-		
 		//Adicionando Listener ao botao_salvar implementado anteriormente
 		SalvarListener salvarListener = new SalvarListener(filme, caixa_titulo, caixa_sinopse, 
 				comboBoxGeneros, grupoOndeAssistir, assistido,
 				starRater);
+		botao_salvar.addActionListener(salvarListener);		
 		
-		
-		botao_salvar.addActionListener(salvarListener);
-		
-		//listener tem que avisar a classe fime que ele pode pegar 
-		
+		//--------------PANEL LISTA------------
+		JPanel lista = new JPanel();
 		
 		//--------------PANEL CREDITOS--------------------
 		JPanel creditos = new JPanel();
@@ -175,8 +173,8 @@ public class AppWireframe extends JFrame{
 		creditos.add(label_icone);
 		
 		//--------------------Adição Panels-------------
-		abas.add("Lista", lista);
 		abas.add("Detalhes", detalhes);
+		abas.add("Lista", lista);
 		abas.add("Creditos", creditos);
 		this.add(abas);
 		
