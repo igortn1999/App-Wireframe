@@ -1,4 +1,4 @@
-package packageWireframe;
+package br.com.fiap.movie;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;

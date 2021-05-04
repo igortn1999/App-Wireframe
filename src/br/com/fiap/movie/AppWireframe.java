@@ -4,8 +4,7 @@
 //--------------RM: 82808---------------
 //------------Turma: 3ECA---------------
 
-
-package packageWireframe;
+package br.com.fiap.movie;
 
 import java.awt.Dimension;
 import java.awt.Image;
@@ -27,7 +26,9 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
 public class AppWireframe extends JFrame{
-	
+
+	private static final long serialVersionUID = 1L;
+
 	public void init() {
 		//definindo titulo
 		this.setTitle("Zona Sul é 10, minha NAC também");

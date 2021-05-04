@@ -1,4 +1,4 @@
-package packageWireframe;
+package br.com.fiap.movie;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JCheckBox;
